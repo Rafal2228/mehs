@@ -4,13 +4,9 @@ const nodemailer = require('nodemailer');
 const passport = require('passport');
 const User = require('../models/User');
 
-/**
- * GET /login
- * Login page.
- */
 exports.getLogin = (req, res) => {
   if (req.user) {
-    return res.redirect('/');
+    return res.redirect('/account');
   }
   res.render('account/login', {
     title: 'Login'
@@ -102,7 +98,7 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err);
         }
-        res.redirect('/');
+        res.redirect('/login');
       });
     });
   });
@@ -189,7 +185,7 @@ exports.postDeleteAccount = (req, res, next) => {
     if (err) { return next(err); }
     req.logout();
     req.flash('info', { msg: 'Your account has been deleted.' });
-    res.redirect('/');
+    res.redirect('/login');
   });
 };
 
@@ -274,7 +270,7 @@ exports.postReset = (req, res, next) => {
     }
   ], (err) => {
     if (err) { return next(err); }
-    res.redirect('/');
+    res.redirect('/login');
   });
 };
 

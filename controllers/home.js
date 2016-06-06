@@ -1,9 +1,5 @@
-/**
- * GET /
- * Home page.
- */
-exports.index = (req, res) => {
-  res.render('home', {
+exports.getHome = (req, res) => {
+  return res.render('home', {
     title: 'Home'
   });
 };
