@@ -1,0 +1,27 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Create new owner!
+  
+  form.form-horizontal(method='POST' action='/owner')
+    .form-group
+      label.col-sm-3.control-label(for='firstName') First Name
+      .col-sm-7
+        input.form-control(type='text', name='firstName', id='firstName', placeholder='First Name', autofocus, required)
+    
+    .form-group
+      label.col-sm-3.control-label(for='lastName') Last Name
+      .col-sm-7
+        input.form-control(type='text', name='lastName', id='lastName', placeholder='Last Name', required)
+        
+    .form-group
+      label.col-sm-3.control-label(for='phone') Phone number
+      .col-sm-7
+        input.form-control(type='number', name='phone', id='phone', placeholder='Phone number', required, min='100000000', max='999999999')
+    
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.col-sm-3.btn.btn-primary(type='submit')
+          i.fa.fa-plus
+          | Create

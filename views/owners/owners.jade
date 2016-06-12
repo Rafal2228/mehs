@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  .page-header
+    a.btn.btn-sm.btn-primary.pull-right(href='/owners/create' alt='create owner')
+      i.fa.fa-plus
+      span.hide-xs Creat new owner&nbsp;
+    h3 Manage owners
+
+  ul.list-group
+    for owner in owners
+      li.list-group-item.clearfix(data-owner='#{owner._id}')
+        button.btn.btn-danger.pull-right.owners-remove(data-owner='#{owner._id}')
+          i.fa.fa-minus
+          span.hide-xs Delete&nbsp;
+        b #{owner.firstName} #{owner.lastName}
+        span &nbsp; #{owner.phone}
+
+block scripts
+  script(src="js/owners/owners.js", charset="utf-8")
+  
+  
+  

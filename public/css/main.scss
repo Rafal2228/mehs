@@ -3,6 +3,7 @@
 @import "lib/bootstrap/bootstrap";
 @import "lib/bootstrap-social";
 @import "lib/font-awesome/font-awesome";
+@import "lib/bootstrap-datepicker.standalone";
 
 @import "themes/modern/modern";
 
@@ -84,4 +85,8 @@ textarea {
   margin-right: 10px;
   background-position: center center;
   background-size: cover;
+}
+
+.input-group-btn > .btn {
+  height: 44px;
 }

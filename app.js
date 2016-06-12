@@ -28,6 +28,7 @@ dotenv.load({ path: '.env' });
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const carController = require('./controllers/car');
+const ownerController = require('./controllers/owner');
 
 /**
  * API keys and Passport configuration.
@@ -108,6 +109,11 @@ app.get('/cars', passportConfig.isAuthenticated, carController.getCars);
 app.get('/cars/create', passportConfig.isAuthenticated, carController.getCreateCar);
 app.post('/cars', passportConfig.isAuthenticated, carController.postCar);
 app.delete('/cars/:id', passportConfig.isAuthenticated, carController.deleteCar);
+app.get('/owner', passportConfig.isAuthenticated, ownerController.getOwner);
+app.post('/owner', passportConfig.isAuthenticated, ownerController.postOwner);
+app.delete('/owner/:id', passportConfig.isAuthenticated, ownerController.deleteOwner);
+app.get('/owners', passportConfig.isAuthenticated, ownerController.getOwners);
+app.get('/owners/create', passportConfig.isAuthenticated, ownerController.getCreateOwners);
 
 /**
  * Error Handler.

@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   .page-header
-    a.btn.btn-sm.btn-default.pull-right(href='/cars/create' alt='create car')
+    a.btn.btn-sm.btn-primary.pull-right(href='/cars/create' alt='create car')
       i.fa.fa-plus
       span.hide-xs Creat new car&nbsp;
     h3 Manage your cars with ease!
@@ -28,7 +28,7 @@ block content
             span HP: #{car.horsePower}hp
 
 block scripts
-  script(src="js/cars.js", charset="utf-8")
+  script(src="js/cars/cars.js", charset="utf-8")
   
   
   

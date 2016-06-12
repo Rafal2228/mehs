@@ -9,24 +9,67 @@ block content
       label.col-sm-3.control-label(for='brand') Brand
       .col-sm-7
         input.form-control(type='text', name='brand', id='brand', placeholder='Brand', autofocus, required)
+    
     .form-group
       label.col-sm-3.control-label(for='model') Model
       .col-sm-7
         input.form-control(type='text', name='model', id='model', placeholder='Model', required)
+    
     .form-group
       label.col-sm-3.control-label(for='dateOfProduction') Date of production
       .col-sm-7
-        input.form-control(type='text', name='dateOfProduction', id='dateOfProduction', placeholder='Date of production', required)
+        .input-group.date
+          input.form-control(type='text', name='dateOfProduction', id='dateOfProduction', placeholder='Date of production', required)
+          span.input-group-addon
+            i.fa.fa-calendar
+    
     .form-group
       label.col-sm-3.control-label(for='engineSize') Engine size (in cm#[sup 2])
       .col-sm-7
         input.form-control(type='number', name='engineSize', id='engineSize', placeholder='Engine size', required)
+    
     .form-group
       label.col-sm-3.control-label(for='horsePower') Horse power (in hp)
       .col-sm-7
         input.form-control(type='number', name='horsePower', id='horsePower', placeholder='Horse power', required)
+    
+    .form-group
+      label.col-sm-3.control-label(for='displayOwnerName') Owner
+      .col-sm-7
+        .input-group
+          input(id='owner' type='hidden', name='owner')
+          input.form-control(
+            id='displayOwnerName'
+            type='text'
+            name='displayOwnerName'
+            placeholder='Please specify the owner'
+            required
+            disabled
+          )
+          span.input-group-btn
+            button.btn.btn-primary#selectOwnerBtn(
+              type='button'
+            )
+              i.fa.fa-hand-pointer-o
+              span.hide-xs Select owner
+        
     .form-group
       .col-sm-offset-3.col-sm-7
         button.col-sm-3.btn.btn-primary(type='submit')
           i.fa.fa-plus
           | Create
+
+  #selectOwnerModal.modal.fade(role='dialog')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal') #[i.fa.fa-close]
+          h4.modal-title Select owner
+        .modal-body#selectOwnerBody
+
+        .modal-footer
+          button.btn.btn-primary(type='button', data-dismiss='modal') #[i.fa.fa-close] Close
+
+
+block scripts
+  script(src="/js/cars/create.js", charset="utf-8")

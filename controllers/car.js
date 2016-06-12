@@ -20,6 +20,7 @@ exports.getCreateCar = (req, res) => {
 };
 
 exports.postCar = (req, res, next) => {
+  console.log(req.body);
   req.assert('brand', 'Brand is required').notEmpty();
   req.assert('model', 'Model is required').notEmpty();
   req.assert('dateOfProduction', 'Date of production is required').notEmpty();
@@ -28,6 +29,7 @@ exports.postCar = (req, res, next) => {
   req.assert('engineSize', 'Engine must be int').isInt();
   req.assert('horsePower', 'Horse power is required').notEmpty();
   req.assert('horsePower', 'Horse power must be int').isInt();
+  req.assert('owner', 'You must specify the owner').notEmpty();
 
   const errors = req.validationErrors();
 
@@ -47,11 +49,12 @@ exports.postCar = (req, res, next) => {
       engineSize: req.body.engineSize,
       horsePower: req.body.horsePower,
       photo: photo,
+      owner: req.body.owner,
     });
 
     car.save((err) => {
       if (err) {
-        req.flash('errors', errors);
+        req.flash('errors', err);
         return res.redirect('/cars/create');
       }
 
