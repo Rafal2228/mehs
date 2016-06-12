@@ -12,8 +12,8 @@
     .collapse.navbar-collapse
       if user
         ul.nav.navbar-nav
-          li(class=(title == 'Contact') ? 'active' : undefined)
-            a(href='/contact') Contact
+          li(class=(title.indexOf('Car') !== -1) ? 'active' : undefined)
+            a(href='/cars') Cars
       ul.nav.navbar-nav.navbar-right
         if !user
           li(class=(title == 'Login') ? 'active' : undefined)

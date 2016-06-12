@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .page-header
+    h3 Create new car!
+  
+  form.form-horizontal(method='POST' action='/cars')
+    .form-group
+      label.col-sm-3.control-label(for='brand') Brand
+      .col-sm-7
+        input.form-control(type='text', name='brand', id='brand', placeholder='Brand', autofocus, required)
+    .form-group
+      label.col-sm-3.control-label(for='model') Model
+      .col-sm-7
+        input.form-control(type='text', name='model', id='model', placeholder='Model', required)
+    .form-group
+      label.col-sm-3.control-label(for='dateOfProduction') Date of production
+      .col-sm-7
+        input.form-control(type='text', name='dateOfProduction', id='dateOfProduction', placeholder='Date of production', required)
+    .form-group
+      label.col-sm-3.control-label(for='engineSize') Engine size (in cm#[sup 2])
+      .col-sm-7
+        input.form-control(type='number', name='engineSize', id='engineSize', placeholder='Engine size', required)
+    .form-group
+      label.col-sm-3.control-label(for='horsePower') Horse power (in hp)
+      .col-sm-7
+        input.form-control(type='number', name='horsePower', id='horsePower', placeholder='Horse power', required)
+    .form-group
+      .col-sm-offset-3.col-sm-7
+        button.col-sm-3.btn.btn-primary(type='submit')
+          i.fa.fa-plus
+          | Create

@@ -27,7 +27,7 @@ dotenv.load({ path: '.env' });
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
-const contactController = require('./controllers/contact');
+const carController = require('./controllers/car');
 
 /**
  * API keys and Passport configuration.
@@ -76,9 +76,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
-app.use((req, res, next) => {
-  lusca.csrf()(req, res, next);
-});
+// app.use((req, res, next) => {
+//   lusca.csrf()(req, res, next);
+// });
 app.use(lusca.xframe('SAMEORIGIN'));
 app.use(lusca.xssProtection(true));
 app.use((req, res, next) => {
@@ -100,12 +100,14 @@ app.get('/reset/:token', userController.getReset);
 app.post('/reset/:token', userController.postReset);
 app.get('/signup', userController.getSignup);
 app.post('/signup', userController.postSignup);
-app.get('/contact', contactController.getContact);
-app.post('/contact', contactController.postContact);
 app.get('/account', passportConfig.isAuthenticated, userController.getAccount);
 app.post('/account/profile', passportConfig.isAuthenticated, userController.postUpdateProfile);
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
+app.get('/cars', passportConfig.isAuthenticated, carController.getCars);
+app.get('/cars/create', passportConfig.isAuthenticated, carController.getCreateCar);
+app.post('/cars', passportConfig.isAuthenticated, carController.postCar);
+app.delete('/cars/:id', passportConfig.isAuthenticated, carController.deleteCar);
 
 /**
  * Error Handler.

@@ -1,0 +1,34 @@
+extends ../layout
+
+block content
+  .page-header
+    a.btn.btn-sm.btn-default.pull-right(href='/cars/create' alt='create car')
+      i.fa.fa-plus
+      span.hide-xs Creat new car&nbsp;
+    h3 Manage your cars with ease!
+
+  for car in cars
+    div.panel.panel-default(data-car='#{car._id}')
+      div.panel-heading.clearfix
+        button.btn.btn-danger.pull-right.cars-remove(data-car='#{car._id}')
+          i.fa.fa-minus
+          span.hide-xs Delete&nbsp;
+        if car.photo
+          .car-image.pull-left(style="background-image: url(#{car.photo})")
+        h6
+          b= car.brand
+          span &nbsp; #{car.model}
+      div.panel-body
+        .row
+          .col-xs-12.col-sm-4
+            span Year of production: #{car.dateOfProduction.getFullYear()}
+          .col-xs-12.col-sm-4
+            span Engine size: #{car.engineSize}cm#[sup 2]
+          .col-xs-12.col-sm-4
+            span HP: #{car.horsePower}hp
+
+block scripts
+  script(src="js/cars.js", charset="utf-8")
+  
+  
+  
